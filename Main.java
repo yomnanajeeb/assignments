@@ -6,9 +6,9 @@ public class Main {
             int x = scanner. nextInt();
             System.out.println("enter the second number");
             int y = scanner. nextInt();
-            System.out.println(x/y) ;
-            System.out.println(x*y) ;
-            System.out.println(x+y) ;
-            System.out.println(x-y);
+            System.out.println("enter third number");
+            int z = scanner. nextInt();
+            System.out.println((x+y)*(z)/(x-y));
+
     }
 }
