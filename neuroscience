@@ -1,0 +1,32 @@
+import random
+
+def tanh(x):
+    return (2 / (1 + pow(2.718281828459045, -2 * x))) - 1  
+
+def dot_product(X, W):
+    return sum(x * w for x, w in zip(X, W))
+
+def forward_propagation(X, W1, W2, b1, b2):
+    z1 = [dot_product(X, W1[0]) + b1, dot_product(X, W1[1]) + b1]
+    h_output = [tanh(z) for z in z1]
+    
+    z2 = [dot_product(h_output, W2[0]) + b2, dot_product(h_output, W2[1]) + b2]
+    o_output = [tanh(z) for z in z2]
+    
+    return h_output, o_output
+
+random.seed(42)  
+W1 = [[random.uniform(-0.5, 0.5) for _ in range(2)] for _ in range(2)]
+W2 = [[random.uniform(-0.5, 0.5) for _ in range(2)] for _ in range(2)]
+
+b1 = 0.5
+b2 = 0.7
+
+i1, i2 = 0.05, 0.10
+X = [i1, i2]
+
+h_output, o_output = forward_propagation(X, W1, W2, b1, b2)
+
+print(f"Random Weights: {W1 + W2}")
+print(f"Hidden Layer Outputs: h1={h_output[0]}, h2={h_output[1]}")
+print(f"Output Layer Outputs: o1={o_output[0]}, o2={o_output[1]}")
